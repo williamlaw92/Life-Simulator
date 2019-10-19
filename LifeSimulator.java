@@ -15,37 +15,32 @@ public class LifeSimulator {
     public static void main (String [] args){
         
         //user inputs
-        Scanner name = new Scanner(System.in);
+        Scanner s = new Scanner(System.in);
+        String userName;
+        String userJob;
+        String userMarry;
+        String userChildren;
+        String userRules;
+        String userFriends;
+        String userSociety;
+        String userMoney;
+               
         System.out.println("What is your name?");
-          String userName = name.nextLine ();
-       
-        Scanner job = new Scanner(System.in);
-        System.out.println("What job do you wish to have? Choose one: Business Man, Artist, Engineer, Helping Profession");
-          String userJob = job.nextLine();
-        
-        Scanner marry = new Scanner(System.in);
+          userName = s.nextLine ();
+        System.out.println("Do you wish to have a job?");
+          userJob = s.nextLine();
         System.out.println("Do you wish to marry?");
-          String userMarry = marry.nextLine();
-        
-        Scanner children = new Scanner(System.in);
+          userMarry = s.nextLine();
         System.out.println("Do you wish to have children?");
-          String userChildren = children.nextLine();
-          
-        Scanner rules = new Scanner(System.in);
+          userChildren = s.nextLine();
         System.out.println("Do you wish to follow rules?");
-          String userRules = rules.nextLine();
-        
-        Scanner friends = new Scanner(System.in);
+          userRules = s.nextLine();
         System.out.println("Do you wish to keep in touch with your friends?");
-          String userFriends = friends.nextLine();
-        
-        Scanner society = new Scanner(System.in);
+          userFriends = s.nextLine();
         System.out.println("Do you wish to meaningfully contribute to society?");
-          String userSociety = society.nextLine();
-        
-        Scanner money = new Scanner(System.in);
+          userSociety = s.nextLine();
         System.out.println("Do you wish to save money?");
-          String userMoney = money.nextLine();
+          userMoney = s.nextLine();
        
         //intializing variables 
         final String Business_Man = "business man";
@@ -87,65 +82,71 @@ public class LifeSimulator {
         
         //prefession probability
         final double jobProbability = Math.random();
-       
+       userJob = actualJob;
+               
         if(jobProbability <= 0.30){
            actualJob = Business_Man;
+             System.out.println("You will be a Business Man");
        } else if (jobProbability > 0.30 && jobProbability <= 0.60){
            actualJob = Helping_Profession;
+             System.out.println ("You wil be a Helping Profession");
        } else if (jobProbability > 0.60 && jobProbability <= 0.70){
            actualJob = Artist;
+             System.out.println("You will be an Artist");
        } else if (jobProbability > 0.70 && jobProbability <= 0.75){
            actualJob = Engineer;
+             System.out.println("You will be an Engineer");
        } else if (jobProbability > 0.75 && jobProbability <= 0.80){
            actualJob = Chronically_Unemployed;
+             System.out.println("You will be Chronically Unemployed");
        }
        
        //wealth, retire and existential crisis probability
        switch(actualJob){
            case Business_Man:
                if(Math.random() <= 0.70){
-                   actualWealth = "will become rich.";
+                   System.out.println("You will become rich.");
                } else {
-                   actualWealth = "will become middle class.";
+                   System.out.println("will become middle class.");
                }
                
                 if (userSociety.equals("yes")){
                     if (Math.random() <= 0.80){
                         contributeToSociety = true;
-                          retireHappy =  "You are able to retire.";
+                          System.out.println("You are able to retire.");
                     } else {
-                        retireHappy = "You are unable to retire.";
+                          System.out.println("You are unable to retire.");
                     }
                 } else {
                     contributeToSociety = false;
                         if (Math.random() <= 0.50){
-                            meaningfulLife = "You will have an existential crisis and live a meaningless life.";
+                            System.out.println("You will have an existential crisis and live a meaningless life.");
                         } else {
-                            meaningfulLife = "You will live a meaningful life.";
+                            System.out.println("You will live a meaningful life.");
                     }
                 }
                break;
                
            case Artist:
                if(Math.random() <= 0.90){
-                   actualWealth = "will become poor.";
+                   System.out.println("You will become poor.");
                } else {
-                   actualWealth = "will become rich.";
+                   System.out.println("You will become rich.");
                } 
                
                 if (userSociety.equals("yes")){
                     if (Math.random() <= 0.80){
                         contributeToSociety = true;
-                            retireHappy = "You are unable to retire.";
+                            System.out.println("You are unable to retire.");
                     } else {
-                            retireHappy = "You are able to retire";
+                            System.out.println("You are able to retire");
                     }
                 } else {
                     contributeToSociety = false;
                         if (Math.random() <= 0.20){
-                            meaningfulLife = "You will have an existential crisis and live a meaningless life.";
+                            System.out.println("You will have an existential crisis and live a meaningless life.");
                         } else {
-                            meaningfulLife = "You will live a meaningful life.";  
+                            System.out.println("You will live a meaningful life.");  
                     }
                 }
                break;
@@ -156,22 +157,22 @@ public class LifeSimulator {
                if (userSociety.equals("yes")){
                    contributeToSociety = true;
                         if (Math.random() <= 0.20){
-                            retireHappy = "You are unable to retire.";
+                            System.out.println("You are unable to retire.");
                         } else {
-                            retireHappy = "You are able to retire";
+                            System.out.println("You are able to retire");
                     }
                } else {
                    contributeToSociety = false;
                         if (Math.random() <= 0.50){
-                            meaningfulLife = "You will have an existential crisis and live a meaningless life.";
+                            System.out.println("You will have an existential crisis and live a meaningless life.");
                         } else {
-                            meaningfulLife = "You will live a meaningful life.";
+                            System.out.println("You will live a meaningful life.");
                     }
                }
                break;
                
            case Helping_Profession:
-               actualWealth = "will become middle class.";
+               System.out.println("You will become middle class.");
                
                if (userSociety.equals("yes")){
                    contributeToSociety = true;
@@ -194,15 +195,16 @@ public class LifeSimulator {
                actualWealth = "will become poor.";
                retireHappy = "You are unable to retire.";
                meaningfulLife = "You will have an existential crisis and live a meaningless life.";
-     
+    
+               System.out.println(actualJob + retireHappy + meaningfulLife);
        }
     
        //married divorce probability?
        if(userMarry.equals("yes")){
            if(Math.random() <= 0.25){
-               isMarried = "You will be divorced";
+               System.out.println("You will be divorced");
            } else {
-               isMarried = "You will be happily married.";
+               System.out.println("You will be happily married.");
        } 
            }
        
@@ -260,13 +262,11 @@ public class LifeSimulator {
     String lifeParagraph = "";
     lifeParagraph += userName;
     lifeParagraph += " was an interesting person.";
-    lifeParagraph += userName + userMoney + userFriends;
     
     if (userMarry.equals("yes")){
-        lifeParagraph += (name + " wants to marry");
+        lifeParagraph += (userName + " wants to marry. ");
     }
     
-    lifeParagraph += (name + " became a " + actualJob + actualWealth);
     
     if (hasChildren){
         lifeParagraph += "They had " + numOfChildren + " children.";
@@ -277,27 +277,27 @@ public class LifeSimulator {
         }
         
         if (numOfChildren >= 1){
-            lifeParagraph += "Their 1st child was " + child1Gender + " named " + child1Name + "."; 
+            lifeParagraph += "Their 1st child was " + child1Gender + " named " + child1Name + ". "; 
         }
         
         if (numOfChildren >= 2){
-            lifeParagraph += "Their 2nd child was " + child2Gender + " named " + child2Name + ".";
+            lifeParagraph += "Their 2nd child was " + child2Gender + " named " + child2Name + ". ";
         }
         
         if (numOfChildren >= 3){
-            lifeParagraph += "Their 3rd child was " + child3Gender + " named " + child3Name + ".";
+            lifeParagraph += "Their 3rd child was " + child3Gender + " named " + child3Name + ". ";
         }
         
         if (numOfChildren >=4){
-            lifeParagraph += "Their 4th child was " + child4Gender + " named " + child4Name + ".";
+            lifeParagraph += "Their 4th child was " + child4Gender + " named " + child4Name + ". ";
         }
         
         if (numOfChildren >= 5){
-            lifeParagraph += "Their 5th child was " + child5Gender + " named " + child5Name + ".";
+            lifeParagraph += "Their 5th child was " + child5Gender + " named " + child5Name + ". ";
         }
         
         if (numOfChildren >= 6){
-            lifeParagraph += "Their 6th child was " + child6Gender + " named " + child6Name + ".";
+            lifeParagraph += "Their 6th child was " + child6Gender + " named " + child6Name + ". ";
         }
         
         if (numOfChildren >= 7){
@@ -315,22 +315,6 @@ public class LifeSimulator {
     System.out.println (lifeParagraph);
     
     
-    
         }
-    
-        
-    
-    
-  
-    
-        
-        
-        
+
         } 
-
-          
-          
-            
-            
-        
-
